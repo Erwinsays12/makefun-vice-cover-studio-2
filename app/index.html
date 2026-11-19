@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vice Cover Studio — GTA-style cover art maker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>VICE <span>COVER</span> STUDIO</h1>
+      <p>
+        Turn your photo and a caption into GTA-style multi-panel cover art.
+        Everything runs offline — photos never leave your machine.
+      </p>
+    </header>
+    <main>
+      <section class="preview">
+        <canvas id="coverCanvas" width="1920" height="1080"></canvas>
+        <p class="hint" id="panelHint">
+          Click a panel to select it, then load a photo into it. Drag on the
+          preview to pan the selected panel.
+        </p>
+        <div id="selftest" hidden></div>
+      </section>
+      <aside class="controls" aria-label="Cover controls">
+        <div class="control-group">
+          <h2>Layout</h2>
+          <div class="row" id="layoutButtons"></div>
+        </div>
+        <div class="control-group">
+          <h2>Post size</h2>
+          <div class="row" id="sizeButtons"></div>
+        </div>
+        <div class="control-group">
+          <h2>Caption</h2>
+          <label class="field">
+            Caption text
+            <input
+              type="text"
+              id="captionInput"
+              maxlength="28"
+              value="NEON NIGHTS"
+              autocomplete="off"
+            />
+          </label>
+          <div class="row" id="captionStyleButtons"></div>
+        </div>
+        <div class="control-group">
+          <h2>Colour grade</h2>
+          <div class="row" id="gradeButtons"></div>
+        </div>
+        <div class="control-group">
+          <h2>Photo — panel <span id="panelNumber">1</span></h2>
+          <label class="field">
+            Load a photo into this panel
+            <input type="file" id="photoInput" accept="image/*" />
+          </label>
+          <div class="row">
+            <button type="button" id="sampleButton">Use sample photo</button>
+            <button type="button" id="fillAllButton">Fill all panels</button>
+          </div>
+          <label class="field">
+            Zoom
+            <input
+              type="range"
+              id="zoomRange"
+              min="1"
+              max="2.5"
+              step="0.05"
+              value="1"
+            />
+          </label>
+          <label class="field">
+            Pan left / right
+            <input
+              type="range"
+              id="panXRange"
+              min="-0.5"
+              max="0.5"
+              step="0.01"
+              value="0"
+            />
+          </label>
+          <label class="field">
+            Pan up / down
+            <input
+              type="range"
+              id="panYRange"
+              min="-0.5"
+              max="0.5"
+              step="0.01"
+              value="0"
+            />
+          </label>
+        </div>
+        <div class="control-group">
+          <h2>Effects</h2>
+          <label class="check">
+            <input type="checkbox" id="halftoneCheck" checked /> Halftone dots
+            on the caption band
+          </label>
+          <label class="check">
+            <input type="checkbox" id="grainCheck" checked /> Film grain
+          </label>
+        </div>
+        <div class="control-group">
+          <h2>Export</h2>
+          <button type="button" class="primary" id="exportButton">
+            Export PNG
+          </button>
+          <p class="status" id="exportStatus"></p>
+        </div>
+      </aside>
+    </main>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
